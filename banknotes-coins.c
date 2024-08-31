@@ -1,43 +1,44 @@
 #include <stdio.h>
-#include <math.h>
 
 int main()
 {
-    double n;
+    double nDouble;
+    int n;
     int qtd[12];
 
     for (int i = 0; i < 12; i++) {
         qtd[i] = 0;
     }
 
-    scanf("%lf", &n);
+    scanf("%lf", &nDouble);
+    n = (int)(nDouble * 100);
 
     // Banknotes
-    qtd[0] = (int)n / 100; 
-    n = fmod(n, 100);
-    qtd[1] = (int)n / 50; 
-    n = fmod(n, 50);
-    qtd[2] = (int)n / 20; 
-    n = fmod(n, 20);
-    qtd[3] = (int)n / 10; 
-    n = fmod(n, 10);
-    qtd[4] = (int)n / 5; 
-    n = fmod(n, 5);
-    qtd[5] = (int)n / 2; 
-    n = fmod(n, 2);
+    qtd[0] = n / 10000;
+    n = n % 10000;
+    qtd[1] = n / 5000;
+    n = n % 5000;
+    qtd[2] = n / 2000;
+    n = n % 2000;
+    qtd[3] = n / 1000;
+    n = n % 1000;
+    qtd[4] = n / 500;
+    n = n % 500;
+    qtd[5] = n / 200;
+    n = n % 200;
 
     // Coins
-    qtd[6] = (int)n / 1; 
-    n = fmod(n, 1);
-    qtd[7] = (int)(n / 0.5); 
-    n = fmod(n, 0.5);
-    qtd[8] = (int)(n / 0.25); 
-    n = fmod(n, 0.25);
-    qtd[9] = (int)(n / 0.1); 
-    n = fmod(n, 0.1);
-    qtd[10] = (int)(n / 0.05); 
-    n = fmod(n, 0.05);
-    qtd[11] = (int)(n / 0.01); 
+    qtd[6] = n / 100;
+    n = n % 100;
+    qtd[7] = n / 50;
+    n = n % 50;
+    qtd[8] = n / 25;
+    n = n % 25;
+    qtd[9] = n / 10;
+    n = n % 10;
+    qtd[10] = n / 5;
+    n = n % 5;
+    qtd[11] = n;
 
     printf("NOTAS:\n");
     printf("%d nota(s) de R$ 100.00\n", qtd[0]);
